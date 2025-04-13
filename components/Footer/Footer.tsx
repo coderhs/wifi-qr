@@ -1,4 +1,4 @@
-import { IconBrandMastodon } from '@tabler/icons-react';
+import { IconBrandMastodon, IconBrandGithub } from '@tabler/icons-react';
 import { ActionIcon, Container, Group, Box } from '@mantine/core';
 import classes from './Footer.module.css';
 import Logo from '@/components/Logo';
@@ -13,6 +13,11 @@ export function Footer() {
           <ActionIcon size="lg" color="gray" variant="subtle">
             <Link href="https://ruby.social/@coderhs">
               <IconBrandMastodon size={18} stroke={1.5} />
+            </Link>
+          </ActionIcon>
+          <ActionIcon size="lg" color="gray" variant="subtle">
+            <Link href="https://github.com/coderhs">
+              <IconBrandGithub size={18} stroke={1.5} />
             </Link>
           </ActionIcon>
         </Group>

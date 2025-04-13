@@ -8,31 +8,8 @@ import { Button, Box } from '@mantine/core';
 import Logo from '@/components/Logo';
 
 
-const links = [
-  { link: '/about', label: 'Features' },
-  { link: '/pricing', label: 'Pricing' },
-  { link: '/learn', label: 'Learn' },
-  { link: '/community', label: 'Community' },
-];
-
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
-
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
-    >
-      {link.label}
-    </a>
-  ));
 
   return (
     <header className={classes.header}>
@@ -40,6 +17,7 @@ export function Header() {
         <Logo />
         <Group gap={5} visibleFrom="xs">
           <Button
+            variant="outline" size="xs" radius="xs"
             component="a"
             href="https://hsps.in"
             target="_blank"
@@ -47,8 +25,16 @@ export function Header() {
           >
             hsps.in
           </Button>
+          <Button
+            variant="outline" color="gray" size="xs" radius="xs"
+            component="a"
+            href="https://github.com/coderhs/wifi-qr"
+            target="_blank"
+            rel="noopener"
+          >
+            Github
+          </Button>
         </Group>
-
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Container>
     </header>
