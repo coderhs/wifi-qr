@@ -24,7 +24,7 @@ export default function WifiForm({ onGenerate }: { onGenerate: (data: any) => vo
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack spacing="md">
+      <Stack>
         <TextInput
           label="Wi-Fi Name (SSID)"
           value={ssid}

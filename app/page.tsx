@@ -3,9 +3,7 @@ import { useState } from 'react';
 import WifiForm from '@/components/WifiForm/WifiForm';
 import QRCodeDisplay from '@/components/QRCodeDisplay/QRCodeDisplay';
 import { Grid, Container } from '@mantine/core';
-import { Timeline, Text } from '@mantine/core';
-import { IconCertificate } from '@tabler/icons-react';
-import { Avatar, Paper, Title } from '@mantine/core';
+import { Paper, Title } from '@mantine/core';
 
 export default function Home() {
   const [wifiData, setWifiData] = useState({});
