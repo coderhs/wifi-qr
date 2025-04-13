@@ -1,10 +1,9 @@
 import '@mantine/core/styles.css';
 
 import React from 'react';
-import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
+import { mantineHtmlProps, MantineProvider } from '@mantine/core';
 import { theme } from '../theme';
-import { AppShell, Box } from '@mantine/core';
-
+import { Box } from '@mantine/core';
 
 export const metadata = {
   title: 'WIFI QR Code Generator',
