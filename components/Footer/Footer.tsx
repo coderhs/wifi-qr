@@ -8,7 +8,9 @@ export function Footer() {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <Logo />
+        <Box visibleFrom="xs">
+          <Logo />
+        </Box>
         <Group gap={0} className={classes.links} justify="flex-end" wrap="nowrap">
           <ActionIcon size="lg" color="gray" variant="subtle">
             <Link href="https://ruby.social/@coderhs">
