@@ -94,6 +94,7 @@ export default function QRCodeDisplay({ data }: { data: any }) {
       </Box>
       <Group justify="center" mt="md">
         <Button
+          visibleFrom="sm"
           onClick={handlePrint}
           variant="outline"
           size="sm"
