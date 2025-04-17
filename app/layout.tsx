@@ -4,6 +4,8 @@ import React from 'react';
 import { mantineHtmlProps, MantineProvider } from '@mantine/core';
 import { theme } from '../theme';
 import { Box } from '@mantine/core';
+import { Analytics } from "@vercel/analytics/react"
+
 
 export const metadata = {
   title: 'WIFI QR Code Generator',
@@ -22,6 +24,7 @@ export default function RootLayout({ children }: { children: any }) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
+        <Analytics />
       </head>
       <body>
         <MantineProvider theme={theme}>
