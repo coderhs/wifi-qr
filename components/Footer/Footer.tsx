@@ -18,7 +18,7 @@ export function Footer() {
             </Link>
           </ActionIcon>
           <ActionIcon size="lg" color="gray" variant="subtle">
-            <Link href="https://github.com/coderhs">
+            <Link href="https://github.com/coderhs/wifi-qr">
               <IconBrandGithub size={18} stroke={1.5} />
             </Link>
           </ActionIcon>

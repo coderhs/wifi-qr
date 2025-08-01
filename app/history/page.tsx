@@ -6,9 +6,10 @@ import {
   Group,
   Card,
   ActionIcon,
+  Paper
 } from '@mantine/core';
-import { useEffect, useState } from 'react';
-import { IconTrash } from '@tabler/icons-react';
+import { useEffect, useRef, useState } from 'react';
+import { IconTrash, IconDownload, IconPrinter } from '@tabler/icons-react';
 
 type WifiEntry = {
   id: string;
@@ -21,6 +22,7 @@ const STORAGE_KEY = 'wifi-qr-history';
 
 export default function HistoryPage() {
   const [entries, setEntries] = useState<WifiEntry[]>([]);
+  const printRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -41,6 +43,35 @@ export default function HistoryPage() {
     );
   }
 
+  const downloadQRCode = (entry: WifiEntry) => {
+    const link = document.createElement('a');
+    link.href = entry.qr;
+    link.download = `${entry.ssid}-wifi-qr.png`;
+    link.click();
+  };
+
+  const handlePrint = (id: string) => {
+    const content = printRefs.current[id];
+    if (!content) return;
+
+    const printWindow = window.open('', '', 'width=600,height=800');
+    if (!printWindow) return;
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Print QR</title>
+        </head>
+        <body>${content.innerHTML}</body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+    printWindow.close();
+  };
+
+
   return (
     <>
     {entries
@@ -51,11 +82,32 @@ export default function HistoryPage() {
             <Box style={{ flex: 1 }}>
               <Text fw={500}>{entry.ssid}</Text>
             </Box>
-            <Box style={{ width: 80 }}>
-              <img src={entry.qr} alt={`QR for ${entry.ssid}`} style={{ width: '100%' }} />
+            <Box id={`print-${entry.id}`}>
+              <Paper
+                p="sm"
+                withBorder
+                style={{ width: 140, textAlign: 'center', backgroundColor: 'white' }}
+              >
+                <img
+                  src={entry.qr}
+                  alt={`QR code for ${entry.ssid}`}
+                  style={{ width: '100%' }}
+                />
+                <Text size="xs" mt="xs">
+                  SSID: <strong>{entry.ssid}</strong>
+                </Text>
+                <Text size="xs" c="dimmed">
+                  Scan to connect
+                </Text>
+              </Paper>
             </Box>
+
+
             <ActionIcon onClick={() => deleteEntry(entry.id)} color="red" variant="subtle">
               <IconTrash size={20} />
+            </ActionIcon>
+            <ActionIcon onClick={() => downloadQRCode(entry)} color="red" variant="subtle">
+              <IconDownload size={20} />
             </ActionIcon>
           </Group>
         </Card>
