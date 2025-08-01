@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useMantineColorScheme } from '@mantine/core';
 
 // Easy to update vote count - just change this number
-const PRODUCT_HUNT_VOTES = 7; // Update this when you know the vote count
+const PRODUCT_HUNT_VOTES = 16; // Update this when you know the vote count
 
 type Props = {
   fullWidth?: boolean; // for Drawer layout
